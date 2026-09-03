@@ -13,7 +13,17 @@ $page = investorPage();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
-    <title>Finnovate | Financial clarity, designed around you</title>
+    <title>Financial Planning for Investors &amp; HNIs | Finnovate Financial Fitness Check-up</title>
+    <meta name="description" content="Unbiased financial planning for investors and HNIs. Get a ₹999 portfolio health check-up: your fitness score, a 9-page report and a 45-minute expert review." />
+    <link rel="canonical" href="<?= SITE_URL ?>/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Finnovate" />
+    <meta property="og:url" content="<?= SITE_URL ?>/" />
+    <meta property="og:title" content="Financial Planning for Investors &amp; HNIs | Finnovate Financial Fitness Check-up" />
+    <meta property="og:description" content="Unbiased financial planning for investors and HNIs. Get a ₹999 portfolio health check-up: your fitness score, a 9-page report and a 45-minute expert review." />
+    <meta property="og:image" content="<?= SITE_URL ?>/assets/investors/lighthouse-compass-banner.png" />
+    <meta property="og:image:alt" content="Finnovate Financial Fitness Check-up" />
+    <script type="application/ld+json"><?= structuredData() ?></script>
     <script>document.documentElement.dataset.theme = localStorage.getItem('finnovate-theme') || 'light';</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

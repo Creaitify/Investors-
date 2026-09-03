@@ -83,3 +83,51 @@ const INVESTOR_MODAL_OPTIONS = [
     'Ongoing financial advice',
     'Something else',
 ];
+
+/** Canonical origin for absolute URLs in metadata (no trailing slash). */
+const SITE_URL = 'https://investors-lilac-phi.vercel.app';
+
+/**
+ * JSON-LD for the <head>. Facts only — every value below is already stated
+ * elsewhere in this project (footer, FAQs, pricing, INVESTOR_SIX).
+ */
+function structuredData()
+{
+    $graph = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
+            [
+                '@type'       => 'Organization',
+                '@id'         => SITE_URL . '/#organization',
+                'name'        => 'Finnovate',
+                'legalName'   => 'Finnovate Financial Services Pvt. Ltd.',
+                'url'         => SITE_URL . '/',
+                'logo'        => SITE_URL . '/assets/brand/finnovate-logo-brandkit-footer.png',
+                'description' => 'A SEBI-registered, fee-only wealth management firm operating since 2007, providing financial planning for investors and HNIs across India and globally.',
+                'foundingDate' => '2007',
+                'identifier'  => [
+                    '@type' => 'PropertyValue',
+                    'name'  => 'SEBI Registration Number',
+                    'value' => 'INA000010996',
+                ],
+            ],
+            [
+                '@type'       => 'Service',
+                '@id'         => SITE_URL . '/#financial-fitness-checkup',
+                'name'        => 'Financial Fitness Check-up',
+                'serviceType' => 'Financial planning',
+                'url'         => SITE_URL . '/',
+                'provider'    => ['@id' => SITE_URL . '/#organization'],
+                'description' => 'A portfolio health check-up for investors and HNIs: a personalised Financial Fitness Score, a 9-page report, three priority actions and a 45-minute one-to-one review with a SEBI-registered, fee-only planner.',
+                'offers'      => [
+                    '@type'         => 'Offer',
+                    'price'         => '999',
+                    'priceCurrency' => 'INR',
+                    'url'           => SITE_URL . '/',
+                ],
+            ],
+        ],
+    ];
+
+    return json_encode($graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+}
