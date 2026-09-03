@@ -1,0 +1,10 @@
+# Vercel serves the prerendered index.html — the PHP sources are build-time
+# only and must not be published as downloadable files.
+index.php
+build.php
+router.php
+inc/
+.htaccess
+dev-server.js
+_verify/
+output/
