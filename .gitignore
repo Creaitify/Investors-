@@ -1,0 +1,5 @@
+.vercel
+.env*
+
+# Local dev tooling (machine-specific PHP path/port)
+.claude/

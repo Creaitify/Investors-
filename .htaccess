@@ -1,0 +1,18 @@
+# Finnovate — routing for the PHP build.
+# Single landing page: only "/" and "/investors" resolve. Anything else (including
+# the retired "/doctors") falls through to a normal 404.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve real files and directories as-is (assets, css, js).
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Everything else goes to the front controller.
+    RewriteRule ^investors/?$ index.php [L]
+    RewriteRule ^$ index.php [L]
+</IfModule>
+
+DirectoryIndex index.php index.html
