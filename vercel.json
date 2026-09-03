@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/investors",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
