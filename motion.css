@@ -1711,25 +1711,30 @@ html[data-theme="dark"] .fleet-card.is-complete h3 { color: #fff; }
 @media (max-width:430px) { .doctor-footer-grid.footer-without-cta,.process-fleet { grid-template-columns: 1fr; }.checkup-form-card { padding: 28px 20px; border-radius: 24px; }.checkup-security { align-items: flex-start; flex-wrap: wrap; } }
 
 /* Investor-only six-area grid */
-.investor-health-grid-section { position: relative; overflow: hidden; padding: 108px 0 116px; background: radial-gradient(circle at 0 100%,rgba(0,147,86,.08),transparent 28%),linear-gradient(145deg,#f9fbf8,#eef7f1); }
-.investor-health-grid-section::after { content: ''; position: absolute; right: -180px; top: -210px; width: 520px; height: 520px; border: 1px solid rgba(0,147,86,.1); border-radius: 50%; box-shadow: 0 0 0 55px rgba(0,147,86,.025),0 0 0 110px rgba(0,147,86,.018); pointer-events: none; }
-.investor-health-heading { position: relative; z-index: 1; max-width: 850px; margin-bottom: 52px; }
-.investor-health-heading h2 { margin: 0; color: var(--navy); font-size: clamp(42px,5vw,66px); line-height: 1; letter-spacing: -3.3px; }
-.investor-health-heading h2 em { color: var(--green); }
-.investor-health-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
-.investor-health-card { position: relative; min-height: 220px; display: flex; align-items: flex-end; overflow: hidden; padding: 28px 30px; border: 1px solid rgba(4,104,64,.65); border-radius: 10px; color: #fff; background: linear-gradient(145deg,#04975c,#009356); box-shadow: inset 0 1px 0 rgba(255,255,255,.24),0 16px 34px rgba(0,101,61,.12); transition: transform .28s var(--premium-ease),background .28s ease,border-color .28s ease,box-shadow .28s ease; }
-.investor-health-card::after { content: ''; position: absolute; right: -42px; bottom: -76px; width: 190px; height: 190px; border-radius: 50%; background: rgba(180,247,202,.38); transition: transform .45s ease,background .3s ease; }
-.investor-health-card > div { position: relative; z-index: 2; max-width: 52%; transition: max-width .4s var(--premium-ease); }
-.investor-health-card h3 { margin: 0 0 7px; color: #fff; font-size: 20px; letter-spacing: -.7px; }
-.investor-health-card p { max-height: 0; overflow: hidden; margin: 0; color: rgba(255,255,255,.86); font-size: 12px; line-height: 1.45; opacity: 0; transform: translateY(8px); transition: max-height .45s var(--premium-ease),opacity .28s ease,transform .35s var(--premium-ease); }
-.investor-health-card img { position: absolute; z-index: 1; right: 9px; bottom: 8px; width: 135px; height: 135px; object-fit: contain; filter: drop-shadow(0 16px 16px rgba(0,45,29,.24)); transition: transform .5s var(--premium-ease),opacity .3s ease; }
-.investor-health-card:hover { z-index: 2; border-color: #0aae69; background: linear-gradient(145deg,#153d32,#0b4d3d); box-shadow: 0 20px 48px rgba(11,77,61,.24); transform: translateY(-6px); }
-.investor-health-card:hover::after { background: rgba(202,255,215,.12); transform: scale(1.18); }
-.investor-health-card:hover > div { max-width: calc(100% - 12px); }
-.investor-health-card:hover p { max-height: 110px; opacity: 1; transform: none; }
-.investor-health-card:hover img { opacity: .16; transform: translateY(-5px) translateX(14px) scale(1.06) rotate(2deg); }
-@media (max-width:800px) { .investor-health-grid-section { padding: 82px 0 90px; }.investor-health-heading { margin-bottom: 38px; }.investor-health-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.investor-health-card { min-height: 205px; } }
-@media (max-width:520px) { .investor-health-grid-section { padding: 70px 0 76px; }.investor-health-heading h2 { font-size: 38px; letter-spacing: -2.2px; }.investor-health-grid { grid-template-columns: 1fr; gap: 12px; }.investor-health-card { min-height: 180px; padding: 24px; }.investor-health-card img { width: 132px; height: 132px; }.investor-health-card h3 { font-size: 21px; }.investor-health-card p { max-height: 110px; opacity: 1; transform: none; } }
+/* Reusable financial-health section; fixed text width prevents hover reflow. */
+.investor-health-grid-section { position: relative; padding: 80px 0; }
+.investor-health-grid-section > .shell { position: relative; isolation: isolate; overflow: hidden; padding: 56px 30px; border: 1px solid rgba(0,147,86,.16); border-radius: 30px; background: radial-gradient(circle at 95% 0,rgba(0,147,86,.10),transparent 36%),linear-gradient(145deg,#fafbf8,#edf8f1); box-shadow: 0 20px 50px rgba(11,77,61,.08); }
+.investor-health-grid-section > .shell::before { content: ''; position: absolute; z-index: -1; top: 0; right: 0; width: 240px; height: 200px; background: radial-gradient(circle,rgba(0,147,86,.22) 1px,transparent 1.5px) 0 0/14px 14px; mask-image: linear-gradient(225deg,#000,transparent 75%); pointer-events: none; }
+.investor-health-grid-section > .shell::after { content: ''; position: absolute; z-index: -1; left: -135px; bottom: -175px; width: 330px; height: 330px; border: 1px solid rgba(0,147,86,.12); border-radius: 50%; box-shadow: 0 0 0 28px rgba(0,147,86,.035),0 0 0 56px rgba(0,147,86,.025),0 0 0 84px rgba(0,147,86,.018); pointer-events: none; }
+.investor-health-heading { position: relative; max-width: 850px; margin-bottom: 42px; }
+.investor-health-heading h2 { margin: 0; color: var(--navy); font-family: var(--sans); font-size: clamp(36px,5vw,66px); line-height: 1; letter-spacing: -2px; }
+.investor-health-heading h2 em { color: var(--green); font-family: 'DM Serif Display',serif; }
+.investor-health-grid { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+.investor-health-card { position: relative; height: 220px; min-height: 220px; display: flex; align-items: flex-end; overflow: hidden; padding: 21px; border: 1px solid rgba(4,104,64,.3); border-radius: 7px; color: #fff; background: #009356; transition: transform .28s ease,background .28s ease,box-shadow .28s ease; }
+.investor-health-card::after { content: ''; position: absolute; right: -28px; bottom: -36px; width: 135px; height: 135px; border-radius: 50%; background: rgba(215,243,223,.42); transition: transform .45s ease,background .3s ease; }
+.investor-health-card > div { position: relative; z-index: 2; width: 58%; max-width: 58%; }
+.investor-health-card h3 { margin: 0 0 7px; color: #fff; font-size: 20px; line-height: 1.2; letter-spacing: -.7px; }
+.investor-health-card p { max-height: 0; overflow: hidden; margin: 0; color: #dff4e5; font-size: 12px; line-height: 1.45; opacity: 0; transition: max-height .28s ease,opacity .28s ease; }
+.investor-health-card img { position: absolute; z-index: 1; right: 8px; bottom: 12px; width: clamp(100px,10vw,138px); height: clamp(100px,10vw,138px); object-fit: contain; transform: translateY(4px) rotate(-2deg); filter: drop-shadow(0 12px 10px rgba(38,54,67,.13)); transition: transform .45s cubic-bezier(.2,.8,.2,1),filter .3s ease; }
+.investor-health-card:is(:hover,:focus-visible) { z-index: 2; background: #0b4d3d; box-shadow: 0 16px 25px rgba(11,77,61,.27); transform: translateY(-6px); }
+.investor-health-card:focus-visible { outline: 3px solid #173e32; outline-offset: 4px; }
+.investor-health-card:is(:hover,:focus-visible)::after { background: rgba(202,255,215,.12); transform: scale(1.18); }
+.investor-health-card:is(:hover,:focus-visible) p { max-height: 170px; opacity: 1; }
+.investor-health-card:is(:hover,:focus-visible) img { transform: translateY(-5px) rotate(2deg) scale(1.06); filter: drop-shadow(0 16px 13px rgba(23,38,45,.2)); }
+@media (max-width:800px) { .investor-health-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .investor-health-grid-section > .shell { padding: 40px 24px; } }
+@media (max-width:520px) { .investor-health-grid-section { padding: 50px 0; } .investor-health-grid-section > .shell { padding: 32px 18px; } .investor-health-heading h2 { font-size: 34px; letter-spacing: -1.5px; } .investor-health-grid { grid-template-columns: 1fr; } .investor-health-card { height: 260px; min-height: 260px; } .investor-health-card p { max-height: 170px; opacity: 1; } }
+@media (hover:none) { .investor-health-card p { max-height: 170px; opacity: 1; } }
+@media (prefers-reduced-motion:reduce) { .investor-health-card,.investor-health-card p,.investor-health-card img,.investor-health-card::after { transition: none; animation: none; } .investor-health-card:is(:hover,:focus-visible),.investor-health-card img,.investor-health-card:is(:hover,:focus-visible) img,.investor-health-card:is(:hover,:focus-visible)::after { transform: none; } }
 
 /* Investor next actions */
 /* ---- What will you do, in 3 steps : editorial process board ---- */

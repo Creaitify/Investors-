@@ -31,16 +31,23 @@ function reviewNav()
     return '<div class="review-nav"><button data-review-prev aria-label="Previous review">↑</button><button data-review-next aria-label="Next review">↓</button><span><b data-review-count>01</b> / 07</span></div>';
 }
 
-function investorPage()
+function investorHealthSection(array $cards)
 {
     $healthCards = '';
-    foreach (INVESTOR_SIX as $x) {
-        $healthCards .= '<article class="investor-health-card reveal"><div><h3>' . $x[0] . '</h3><p>' . $x[1] . '</p></div><img src="assets/framework/' . $x[2] . '" alt="" aria-hidden="true" loading="lazy" decoding="async"></article>';
+    foreach ($cards as $x) {
+        $healthCards .= '<article class="investor-health-card" tabindex="0"><div><h3>' . $x[0] . '</h3><p>' . $x[1] . '</p></div><img src="assets/framework/' . $x[2] . '" alt="" aria-hidden="true" loading="lazy" decoding="async"></article>';
     }
 
     $healthSection = <<<HTML
 <section id="financial-health" class="investor-health-grid-section"><div class="shell"><div class="section-heading investor-health-heading reveal"><h2>Returns tell one part,<br>Your financial health tells <em>the whole story.</em></h2></div><div class="investor-health-grid" aria-label="Six connected areas of financial health">{$healthCards}</div></div></section>
 HTML;
+
+    return $healthSection;
+}
+
+function investorPage()
+{
+    $healthSection = investorHealthSection(INVESTOR_SIX);
 
     $checkupSection = <<<HTML
 <section id="why" class="checkup-details"><div class="shell"><div class="checkup-form-card"><h2>What we ask in the checkup form</h2><p>It takes exactly 4 minutes. You'll need a rough estimate of your finances. (No exact account details needed.)</p><ul><li>Basic income and expense ranges</li><li>How much you save monthly</li><li>Lumpsum estimates of investments</li><li>Existing health &amp; life cover amounts</li><li>Target retirement age &amp; major goals</li><li>Any outstanding loans</li></ul></div><div class="cost-of-ignorance"><p>46% people do not have enough Emergency Fund <small>(source FinnFit quiz)</small><br>Without that buffer, one hospital bill or job loss can jeopardise your family’s future.</p></div></div></section>
